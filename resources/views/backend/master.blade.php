@@ -1,4 +1,12 @@
 @include('backend.partials.head')
+<div class="container body">
+    <div class="main_container">
+        @include('backend.partials.side-nave')
+        @include('backend.partials.top-nav')
 
-@include('backend.partials.footer')
+        @yield('content')
+
+        @include('backend.partials.footer')
+    </div>
+</div>
 @include('backend.partials.foot')

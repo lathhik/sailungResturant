@@ -20,7 +20,6 @@ class CreateAdminsTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->bigInteger('contact');
-            $table->string('job/post');
             $table->string('nationality');
             $table->enum('privilege', ['Admin', 'Super Admin'])->default('Admin');
             $table->string('image');
