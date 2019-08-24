@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
 
-                                    <form method="post" action="{{route('search')}}" name="search">
+                                    <form method="get" action="{{action('Backend\EmployeeController@searchAction')}}" name="search">
                                         @csrf
                                         <div class="col-sm-6">
                                             <div id="datatable-responsive_filter" class="dataTables_filter">

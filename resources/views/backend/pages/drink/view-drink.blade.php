@@ -36,6 +36,7 @@
                             <th class="text-center">Drinks Name</th>
                             <th class="text-center">Drinks Price</th>
                             <th class="text-center">Drinks Types</th>
+                            <th class="text-center">Drinks Image</th>
                             <th class="text-center">Action</th>
                         </tr>
                         </thead>
@@ -44,14 +45,18 @@
                             <tr>
                                 <th class="text-center" width="10%">{{$loop->iteration}}</th>
                                 <td>{{$drink->drink_name}}</td>
-                                <td>{{$drink->drink_price}}</td>
+                                <td>Rs. {{$drink->drink_price}}</td>
                                 <td>{{$drink->drinkType->drinks_types}}</td>
+                                <td>
+                                    <img src="{{asset('custom/backend/images/drink/'.$drink->image)}}" alt=""
+                                         height="50" id="drinks_pro" class="drinks_pro">
+                                </td>
 
                                 <td width="30%">
-                                    <a href="{{route('edit-drink-type', $drink->id)}}" class="btn btn-sm btn-primary"><i
+                                    <a href="{{route('edit-drink', $drink->id)}}" class="btn btn-sm btn-primary"><i
                                             class="fa fa-edit"></i></a>
                                     <a onclick="return confirm('Are You Sure?')"
-                                       href="{{route('delete-drink-type', $drink->id)}}"
+                                       href="{{route('delete-drink', $drink->id)}}"
                                        class="btn btn-sm btn-danger"><i
                                             class="fa fa-trash"></i></a>
                                 </td>

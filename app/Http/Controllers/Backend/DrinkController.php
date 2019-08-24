@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\models\Drink;
-use App\models\DrinkType;
+use App\models\backend\Drink;
+use App\models\backend\DrinkType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Image;
@@ -70,7 +70,7 @@ class DrinkController extends Controller
             $drink->image = $newName;
 
             if ($drink->save()) {
-                return redirect()->route('backend/pages/drink/view-drink')->with('success', 'Drink was successfully updated');
+                return redirect()->route('view-drink')->with('success', 'Drink was successfully updated');
             }
             return redirect()->back()->with('fail', 'There was some problem');
 
@@ -94,9 +94,11 @@ class DrinkController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function editDrink($id)
     {
-        //
+        $drink = Drink::find($id);
+        $drink_types = DrinkType::all();
+        return view('backend/pages/drink/edit-drink')->with('drink', $drink)->with('drink_types', $drink_types);
     }
 
     /**
@@ -106,9 +108,50 @@ class DrinkController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateDrinkAction(Request $request, $id)
     {
-        //
+
+        $this->validate($request, [
+            'drink_name' => 'required',
+            'drink_price' => 'required',
+            'drink_type' => 'required',
+
+        ]);
+
+        $drink = Drink::find($id);
+
+        $drink->drink_name = $request->drink_name;
+        $drink->drink_price = $request->drink_price;
+        $drink->drink_type_id = $request->drink_type;
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $newName = str_random('20') . '.' . $file->getClientOriginalExtension();
+
+            $image = Image::make($file);
+
+            if (file_exists(public_path('custom/backend/images/drink/' . $drink->image))) {
+                unlink(public_path('custom/backend/images/drink/' . $drink->image));
+            }
+
+            $image->resize(300, null, function ($ar) {
+                $ar->aspectRatio();
+            })->save(public_path('custom/backend/images/drink/' . $newName));
+
+            $drink->image = $newName;
+
+            if ($drink->update()) {
+                return redirect()->route('view-drink')->with('success', 'Drink was successfully updated');
+            }
+            return redirect()->route('view-drink')->with('fail', 'There was some problem');
+
+        }
+
+        if ($drink->update()) {
+            return redirect()->route('view-drink')->with('success', 'Drink was successfully updated');
+        }
+        return redirect()->route('view-drink')->with('fail', 'There was some problem');
+
     }
 
     /**
@@ -117,8 +160,16 @@ class DrinkController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function deleteDrink($id)
     {
-        //
+        $drink = Drink::find($id);
+
+        if (file_exists(public_path('custom/backend/images/drink/' . $drink->image))) {
+            unlink(public_path('custom/backend/images/drink/' . $drink->image));
+        }
+        if ($drink->delete()) {
+            return redirect()->back()->with('success', 'Drink was successfully deleted');
+        }
+        return redirect()->back()->with('fail', 'There was some problem');
     }
 }

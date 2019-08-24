@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\models\DrinkType;
+use App\models\backend\DrinkType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

@@ -35,6 +35,7 @@
                             <th class="text-center">SN</th>
                             <th class="text-center">Food_Name</th>
                             <th class="text-center">Food_Price</th>
+                            <th class="text-center">Food_Image</th>
                             <th class="text-center">Action</th>
                         </tr>
                         </thead>
@@ -43,7 +44,11 @@
                             <tr>
                                 <th class="text-center" width="10%">{{$loop->iteration}}</th>
                                 <td>{{$food->food_name}}</td>
-                                <td>{{$food->food_price}}</td>
+                                <td>Rs. {{$food->food_price}}</td>
+                                <td>
+                                    <img src="{{asset('custom/backend/images/food/'.$food->image)}}" alt="img"
+                                         height="50" id="pro">
+                                </td>
 
                                 <td width="30%">
                                     <a href="{{route('edit-food', $food->id)}}" class="btn btn-sm btn-primary"><i
@@ -56,7 +61,7 @@
                         @empty
                             <tr>
                                 <td colspan="11">No Foods were added. Click <a class="btn btn-sm btn-danger"
-                                        href="{{route('add-food')}}">Here</a>
+                                                                               href="{{route('add-food')}}">Here</a>
                                     to add Foods
                                 </td>
                             </tr>

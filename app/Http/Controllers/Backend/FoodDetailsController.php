@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\models\Food;
-use App\models\FoodDetails;
-use App\models\FoodType;
+use App\models\backend\Food;
+use App\models\backend\FoodDetails;
+use App\models\backend\FoodType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -45,14 +45,18 @@ class FoodDetailsController extends Controller
             'food_type' => 'required'
         ]);
 
-        foreach ($request->food_type as $food_type_id):
-            $food_det = new FoodDetails();
-            $food_det->food_id = $request->food;
-            $food_det->food_type_id = $food_type_id;
-            $food_det->save();
-        endforeach;
-
+        try{
+            foreach ($request->food_type as $food_type_id):
+                $food_det = new FoodDetails();
+                $food_det->food_id = $request->food;
+                $food_det->food_type_id = $food_type_id;
+                $food_det->save();
+            endforeach;
+        }catch (\Exception $e){
+            return redirect()->back()->with('fail', 'There was some problem');
+        }
         return redirect()->back()->with('success', 'Food Details was successfully added');
+
 
 
     }

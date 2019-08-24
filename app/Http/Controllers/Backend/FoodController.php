@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\models\Food;
-use App\models\FoodType;
+use App\models\backend\Food;
+use App\models\backend\FoodDetails;
+use App\models\backend\FoodType;
 use Illuminate\Http\Request;
 use Image;
 
@@ -95,7 +96,8 @@ class FoodController extends Controller
     public function editFood(Food $food, $id)
     {
         $food = Food::find($id);
-        return view('backend/pages/food/edit-food')->with('food', $food);
+        $food_types = FoodType::all();
+        return view('backend/pages/food/edit-food')->with('food', $food)->with('food_types', $food_types);
     }
 
     /**
@@ -107,13 +109,16 @@ class FoodController extends Controller
      */
     public function updateFoodAction(Request $request, $id)
     {
-        $food = Food::find($id);
 
         $this->validate($request, [
             'food_name' => 'required|regex:/^[a-z]*\s(.*)/',
             'food_price' => 'required|numeric',
 //           'image'=>'required|image'
         ]);
+
+        $food = Food::find($id);
+        $food->food_name = $request->food_name;
+        $food->food_price = $request->food_price;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -131,11 +136,28 @@ class FoodController extends Controller
 
             $food->image = $newName;
 
+            $foodFoodType = FoodDetails::where('food_id', '=', $id);
+            $foodFoodType->delete();
+            foreach ($request->food_types as $food_type_id):
+                $mType = new FoodDetails();
+                $mType->food_id = $id;
+                $mType->food_type_id = $food_type_id;
+                $mType->save();
+            endforeach;
+
             if ($food->save()) {
                 return redirect()->route('view-food')->with('success', 'Food was updated successfully');
             }
             return redirect()->route('view-food')->with('fail', 'There was some problem');
         }
+        $foodFoodType = FoodDetails::where('food_id', '=', $id);
+        $foodFoodType->delete();
+        foreach ($request->food_types as $food_type_id):
+            $mType = new FoodDetails();
+            $mType->food_id = $id;
+            $mType->food_type_id = $food_type_id;
+            $mType->save();
+        endforeach;
 
         if ($food->save()) {
             return redirect()->route('view-food')->with('success', 'Food was updated successfully');

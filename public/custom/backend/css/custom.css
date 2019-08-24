@@ -12,3 +12,15 @@ input[type=file]{
 #pro:hover{
     transform: scale(2);
 }
+
+.drinks_pro:hover{
+    transform: scale(8);
+}
+
+#select_food_det{
+    height: 150px;
+}
+
+#select_food_types{
+    height: 200px;
+}

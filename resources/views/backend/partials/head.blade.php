@@ -10,6 +10,9 @@
 
     <title>@yield('title')</title>
 
+    <!--google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
+
     <!-- custom css -->
     <link rel="stylesheet" href="{{asset('custom/backend/css/custom.css')}}">
 

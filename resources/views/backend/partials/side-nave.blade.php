@@ -3,7 +3,7 @@
         <div class="navbar nav_title" style="border: 0;">
             <a href="{{route('dashboard')}}" class="site_title"><img src="{{asset('custom/backend/images/res1.ico')}}"
                                                                      alt=""><span
-                    style="font-size: 19px; text-decoration: underline;font-weight: bold">SailungResaturant</span></a>
+                    style="font-size: 19px; text-decoration: underline;font-weight: bold ;font-family: Berkshire Swash, cursive;">SailungResaturant</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -32,6 +32,12 @@
                             <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                         </ul>
                     </li>
+
+                </ul>
+            </div>
+            <div class="menu_section">
+                <h3>Admin AND Employees</h3>
+                <ul class="nav side-menu">
                     <li><a><i class="fa fa-user-secret"></i> Admin <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{route('add-admin')}}">Add</a></li>
@@ -46,6 +52,13 @@
                             <li><a href="{{route('view-emp')}}">View Employees</a></li>
                         </ul>
                     </li>
+                </ul>
+            </div>
+
+            <div class="menu_section">
+                <h3>FOOD AND DRINKS</h3>
+                <ul class="nav side-menu">
+
                     <li><a><i class="fa fa-bullseye"></i> Foods <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{route('add-food-type')}}">Add Food Type</a></li>
@@ -58,7 +71,7 @@
                     <li><a><i class="fa fa-beer"></i>Drinks<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{route('add-drink')}}">Add Drinks</a></li>
-                            <li><a href="{{'view-drink'}}">View Drinks</a></li>
+                            <li><a href="{{route('view-drink')}}">View Drinks</a></li>
                             <li><a href="{{route('add-drink-type')}}">Add Drinks Type</a></li>
                             <li><a href="{{route('view-drink-type')}}">View Drinks Type</a></li>
                         </ul>
@@ -70,20 +83,21 @@
                         </ul>
                     </li>
                 </ul>
+
             </div>
             <div class="menu_section">
-                <h3>Live On</h3>
+                <h3>Tables and Booking</h3>
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-bug"></i> Additional Pages <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-hotel"></i> Tables <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="e_commerce.html">E-commerce</a></li>
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="project_detail.html">Project Detail</a></li>
-                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="{{route('add-table-type')}}">Add Table Types</a></li>
+                            <li><a href="{{route('view-table-type')}}">View Table Types</a></li>
+                            <li><a href="{{route('add-table')}}">Add Tables</a></li>
+                            <li><a href="{{route('view-table')}}">View Tables</a></li>
                             <li><a href="profile.html">Profile</a></li>
                         </ul>
                     </li>
-                    <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                    <li><a><i class="fa fa-money"></i> Booking <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="page_403.html">403 Error</a></li>
                             <li><a href="page_404.html">404 Error</a></li>

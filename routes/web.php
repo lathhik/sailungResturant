@@ -18,6 +18,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['namespace' => 'frontend'], function () {
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::get('home', 'HomeController@index')->name('home');
+
+    Route::get('menu', 'MenuController@index')->name('menu');
+
+    Route::get('reservation', 'ReservationController@index')->name('reservation');
+
+    Route::get('blog', 'BlogController@index')->name('blog');
+
+    Route::get('gallery', 'FrontendController@showGallery')->name('gallery');
+
+    Route::get('about', 'FrontendController@showAbout')->name('about');
+
+    Route::get('contact', 'FrontendController@showContact')->name('contact');
+
+});
+
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::get('/', 'AdminController@index')->name('dashboard');
@@ -46,7 +64,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::get('edit-emp/{id}', 'EmployeeController@editEmp')->name('edit-emp');
     Route::post('update-emp/{id}', 'EmployeeController@updateEmpAction')->name('update-emp');
 
-    Route::post('search', 'EmployeeController@searchAction')->name('search');
+    Route::get('search', 'EmployeeController@searchAction')->name('search');
 
     Route::get('add-food-type', 'FoodTypeController@addFoodType')->name('add-food-type');
     Route::post('add-food-type-action', 'FoodTypeController@addFoodTypeAction')->name('add-food-type-action');
@@ -67,6 +85,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::get('add-drink', 'DrinkController@addDrink')->name('add-drink');
     Route::post('add-drink-action', 'DrinkController@addDrinkAction')->name('add-drink-action');
     Route::get('view-drink', 'DrinkController@index')->name('view-drink');
+    Route::get('delete-drink/{id}', 'DrinkController@deleteDrink')->name('delete-drink');
+    Route::get('edit-drink/{id}', 'DrinkController@editDrink')->name('edit-drink');
+    Route::post('update-drink/{id}', 'DrinkController@updateDrinkAction')->name('update-drink');
     Route::get('add-drink-type', 'DrinkTypeController@addDrinkType')->name('add-drink-type');
     Route::post('add-drink-type-action', 'DrinkTypeController@addDrinkTypeAction')->name('add-drink-type-action');
     Route::get('view-drink-type', 'DrinkTypeController@index')->name('view-drink-type');
@@ -74,5 +95,18 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
     Route::get('edit-drink-type/{id}', 'DrinkTypeController@editDrinkType')->name('edit-drink-type');
     Route::post('update-drink-type/{id}', 'DrinkTypeController@updateDrinkTypeAction')->name('update-drink-type');
 
+    Route::get('add-table-type', 'TableTypesController@addTableType')->name('add-table-type');
+    Route::post('add-table-type-action', 'TableTypesController@addTableTypesAction')->name('add-table-type-action');
+    Route::get('view-table-type', 'TableTypesController@index')->name('view-table-type');
+    Route::get('edit-table-type/{id}', 'TableTypesController@editTableType')->name('edit-table-type');
+    Route::post('update-table-type/{id}', 'TableTypesController@updateTableTypeAction')->name('update-table-type');
+    Route::get('delete-table-type/{id}', 'TableTypesController@deleteTableType')->name('delete-table-type');
+    Route::get('add-table', 'TableController@addTable')->name('add-table');
+    Route::post('add-table-action', 'TableController@addTableAction')->name('add-table-action');
+    Route::get('view-table', 'TableController@viewTable')->name('view-table');
+    Route::get('edit-table/{id}', 'TableController@editTable')->name('edit-table');
+    Route::post('update-table/{id}', 'TableController@updateTableAction')->name('update-table');
+    Route::get('delete-table/{id}', 'TableController@deleteTableAction')->name('delete-table');
 
 });
+

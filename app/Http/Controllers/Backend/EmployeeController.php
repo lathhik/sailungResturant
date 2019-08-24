@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\models\Employee;
-use App\models\Role;
+use App\models\backend\Employee;
+use App\models\backend\Role;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Image;
@@ -241,13 +241,21 @@ class EmployeeController extends Controller
         if (empty($searchFor)) {
             return redirect()->back()->with('fail', 'No search were given');
         } else {
-            $result = Employee::where('first_name', 'LIKE', '%' . $searchFor . '%')->orWhere('email', 'LIKE', '%' . $searchFor . '%')->paginate(15);
+            $result = Employee::whereHas('role', function ($query) use ($searchFor) {
+                $query->where('role', 'LIKE', '%' . $searchFor . '%')
+                    ->orWhere('first_name', 'LIKE', '%' . $searchFor . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchFor . '%')
+                    ->orWhere('role_id', 'LIKE', '%' . $searchFor . '%');
+            })->paginate(5);
 
             if (count($result) > 0) {
-//                return view('backend/pages/employee/view-emp')->with('employees', $result)->with('success', 'Search Results');
-                return redirect()->route('view-emp')->with('success', ' Search Results')->with('employees', $result);
+                return view('backend/pages/employee/view-emp')
+                    ->with('employees', $result)
+                    ->with('success', 'Search Results');
+//                return redirect()->route('view-emp')->with('success', ' Search Results')->with('employees', $result);
+//                return redirect()->route('view-emp')->with('employees', $result);
             }
         }
-        return redirect()->back()->with('fail', 'No such search was found');
+        return redirect()->route('view-emp')->with('fail', 'No such search was found');
     }
 }

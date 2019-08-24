@@ -1,5 +1,5 @@
 @extends('backend.master')
-@section('title', 'AddEmp')
+@section('title', 'AddFood')
 @section('content')
     <div class="right_col" role="main" style="">
         <div class="">
@@ -42,28 +42,28 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Food Type
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select name="food_type[]" id="" class="form-control col-md-7 col-xs-12" multiple>
-                                            <option value="{{old('food_type')}}" class="disabled" disabled
-                                                    selected>
-                                                @if(old('food_type'))
-                                                    {{old('food_type')}}
-                                                @else
-                                                    Select Food Type
-                                                @endif
-                                            </option>
-                                            @foreach($food_types as $food_type)
-                                                <option value="{{$food_type->id}}">{{$food_type->food_type}}</option>
-                                            @endforeach
-                                        </select>
-                                        @if($errors->has('food_type'))
-                                            <p class="text-danger">{{$errors->first('food_type')}}</p>
-                                        @endif
-                                    </div>
-                                </div>
+{{--                                <div class="form-group">--}}
+{{--                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Food Type--}}
+{{--                                    </label>--}}
+{{--                                    <div class="col-md-6 col-sm-6 col-xs-12">--}}
+{{--                                        <select name="food_type[]" id="" class="form-control col-md-7 col-xs-12" multiple>--}}
+{{--                                            <option value="{{old('food_type')}}" class="disabled" disabled--}}
+{{--                                                    selected>--}}
+{{--                                                @if(old('food_type'))--}}
+{{--                                                    {{old('food_type')}}--}}
+{{--                                                @else--}}
+{{--                                                    Select Food Type--}}
+{{--                                                @endif--}}
+{{--                                            </option>--}}
+{{--                                            @foreach($food_types as $food_type)--}}
+{{--                                                <option value="{{$food_type->id}}">{{$food_type->food_type}}</option>--}}
+{{--                                            @endforeach--}}
+{{--                                        </select>--}}
+{{--                                        @if($errors->has('food_type'))--}}
+{{--                                            <p class="text-danger">{{$errors->first('food_type')}}</p>--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
 
 
                                 <div class="form-group">

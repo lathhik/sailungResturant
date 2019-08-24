@@ -43,28 +43,48 @@
                                         @endif
                                     </div>
                                 </div>
-                                {{--                                <div class="form-group">--}}
-                                {{--                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Food Type--}}
-                                {{--                                    </label>--}}
-                                {{--                                    <div class="col-md-6 col-sm-6 col-xs-12">--}}
-                                {{--                                        <select name="food_type[]" id="" class="form-control col-md-7 col-xs-12" multiple>--}}
-                                {{--                                            <option value="{{old('food_type')}}" class="disabled" disabled--}}
-                                {{--                                                    selected>--}}
-                                {{--                                                @if(old('food_type'))--}}
-                                {{--                                                    {{old('food_type')}}--}}
-                                {{--                                                @else--}}
-                                {{--                                                    Select Food Type--}}
-                                {{--                                                @endif--}}
-                                {{--                                            </option>--}}
-                                {{--                                            @foreach($food_types as $food_type)--}}
-                                {{--                                                <option value="{{$food_type->id}}">{{$food_type->food_type}}</option>--}}
-                                {{--                                            @endforeach--}}
-                                {{--                                        </select>--}}
-                                {{--                                        @if($errors->has('food_type'))--}}
-                                {{--                                            <p class="text-danger">{{$errors->first('food_type')}}</p>--}}
-                                {{--                                        @endif--}}
-                                {{--                                    </div>--}}
-                                {{--                                </div>--}}
+                                <div class="form-group">
+                                    <label
+                                        class="control-label col-md-3 col-sm-3 col-xs-12">Food
+                                        Type
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                @foreach($food_types as $food_type)
+                                                    <input type="checkbox" value="{{$food_type->id}}" name="food_types[]"
+                                                           @foreach ($food->foodFoodType as $mFoodType)
+                                                           @if($mFoodType->food_type_id == $food_type->id)
+                                                           checked
+                                                        @endif
+                                                        @endforeach>{{$food_type->food_type}}
+                                                    <br>
+                                                @endforeach
+                                            </label>
+                                        </div>
+
+                                        {{--                                        <select name="food_type[]" id="select_food_types"--}}
+                                        {{--                                                class="form-control col-md-7 col-xs-12"--}}
+                                        {{--                                                multiple>--}}
+                                        {{--                                            <option value="{{old('food_type')}}"--}}
+                                        {{--                                                    class="disabled" disabled--}}
+                                        {{--                                                    selected>--}}
+                                        {{--                                                @if(old('food_type'))--}}
+                                        {{--                                                    {{old('food_type')}}--}}
+                                        {{--                                                @else--}}
+                                        {{--                                                    Select Food Type--}}
+                                        {{--                                                @endif--}}
+                                        {{--                                            </option>--}}
+                                        {{--                                            @foreach($food_types as $food_type)--}}
+                                        {{--                                                <option--}}
+                                        {{--                                                    value="{{$food_type->id}}">{{$food_type->food_type}}</option>--}}
+                                        {{--                                            @endforeach--}}
+                                        {{--                                        </select>--}}
+                                        @if($errors->has('food_type'))
+                                            <p class="text-danger">{{$errors->first('food_type')}}</p>
+                                        @endif
+                                    </div>
+                                </div>
 
 
                                 <div class="form-group">
