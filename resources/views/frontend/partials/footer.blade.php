@@ -12,7 +12,7 @@
                 <ul class="m-b-70">
                     <li class="txt14 m-b-14">
                         <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        8th floor, 379 Hudson St, New York, NY 10018
+                        1th floor, Khadka Tehch Building, Baneshowr, Nepal
                     </li>
 
                     <li class="txt14 m-b-14">
@@ -53,7 +53,7 @@
 							<i class="fa fa-twitter" aria-hidden="true"></i>
 						</span>
                     <a href="#" class="txt15">
-                        @colorlib
+                        @sailung
                     </a>
 
                     <p class="txt14 m-b-18">
@@ -73,7 +73,7 @@
 							<i class="fa fa-twitter" aria-hidden="true"></i>
 						</span>
                     <a href="#" class="txt15">
-                        @colorlib
+                        @sailung
                     </a>
 
                     <p class="txt14 m-b-18">
@@ -160,7 +160,7 @@
                 </div>
 
                 <div class="txt17 p-r-20 p-t-5 p-b-5">
-                    Copyright &copy; 2018 All rights reserved  |  This template is made with <i class="fa fa-heart"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                    Copyright &copy; 2018 All rights reserved  |  Sailung Restaurant</a>
                 </div>
             </div>
         </div>

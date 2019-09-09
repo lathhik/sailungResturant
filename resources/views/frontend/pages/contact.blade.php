@@ -5,13 +5,11 @@
 @section('content')
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
-             style="background-image: url(custom/frontend/images/bg-title-page-02.jpg);">
+             style="background-image: url(custom/frontend/image/contact1.jpg);">
         <h2 class="tit6 t-center">
             Contact
         </h2>
     </section>
-
-
 
     <!-- Contact form -->
     <section class="section-contact bg1-pattern p-t-90 p-b-113">
@@ -19,16 +17,18 @@
         <div class="container">
             <div class="map bo8 bo-rad-10 of-hidden">
                 <div class="contact-map size37" id="google_map" data-map-x="40.704644" data-map-y="-74.011987"
-                     data-pin="custom/frontend/images/icons/icon-position-map.png" data-scrollwhell="0" data-draggable="1"></div>
+                     data-pin="custom/frontend/images/icons/sailung_logo5.png" data-scrollwhell="0"
+                     data-draggable="1"></div>
             </div>
         </div>
 
-        <div class="container">
+        <div class="container" id="contact-message">
             <h3 class="tit7 t-center p-b-62 p-t-105">
                 Send us a Message
             </h3>
-
-            <form class="wrap-form-reservation size22 m-l-r-auto">
+            @include('messages.succFail')
+            <form class="wrap-form-reservation size22 m-l-r-auto" method="post" action="{{route('customer-message')}}">
+                @csrf
                 <div class="row">
                     <div class="col-md-4">
                         <!-- Name -->
@@ -37,8 +37,13 @@
 						</span>
 
                         <div class="wrap-inputname size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="name" placeholder="Name"
+                                   value="{{old('name')}}">
+                            @if($errors->has('name'))
+                                <p class="text-danger">{{$errors->first('name')}}</p>
+                            @endif
                         </div>
+
                     </div>
 
                     <div class="col-md-4">
@@ -48,7 +53,11 @@
 						</span>
 
                         <div class="wrap-inputemail size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email" placeholder="Email">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="email"
+                                   placeholder="Email" value="{{old('email')}}">
+                            @if($errors->has('email'))
+                                <p class="text-danger">{{$errors->first('email')}}</p>
+                            @endif
                         </div>
                     </div>
 
@@ -59,7 +68,11 @@
 						</span>
 
                         <div class="wrap-inputphone size12 bo2 bo-rad-10 m-t-3 m-b-23">
-                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone" placeholder="Phone">
+                            <input class="bo-rad-10 sizefull txt10 p-l-20" type="text" name="phone"
+                                   placeholder="Phone" value="{{old('phone')}}">
+                            @if($errors->has('phone'))
+                                <p class="text-danger">{{$errors->first('phone')}}</p>
+                            @endif
                         </div>
                     </div>
 
@@ -69,7 +82,10 @@
 							Message
 						</span>
                         <textarea class="bo-rad-10 size35 bo2 txt10 p-l-20 p-t-15 m-b-10 m-t-3" name="message"
-                                  placeholder="Message"></textarea>
+                                  placeholder="Message">{{old('message')}}</textarea>
+                        @if($errors->has('message'))
+                            <p class="text-danger">{{$errors->first('message')}}</p>
+                        @endif
                     </div>
                 </div>
 
@@ -94,7 +110,7 @@
 							</span>
 
                             <span class="txt23 size38">
-								8th floor, 379 Hudson St, New York, NY 10018
+								1th floor, Khadka Tehch Building, Baneshowr,Kathmandu, Nepal
 							</span>
                         </div>
                     </div>

@@ -5,9 +5,9 @@
 @section('content')
     <!-- Title Page -->
     <section class="bg-title-page flex-c-m p-t-160 p-b-80 p-l-15 p-r-15"
-             style="background-image: url(custom/frontend/images/bg-title-page-01.jpg);">
+             style="background-image: url(custom/frontend/image/menu1.jpg);">
         <h2 class="tit6 t-center">
-            Pato Menu
+            Sailung Menu
         </h2>
     </section>
 
@@ -19,380 +19,250 @@
                 <div class="col-md-10 col-lg-6 p-r-35 p-r-15-lg m-l-r-auto">
                     <div class="wrap-item-mainmenu p-b-22">
                         <h3 class="tit-mainmenu tit10 p-b-25">
-                            STARTERS
+                            BREAKFAST
                         </h3>
 
                         <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Pine nut sbrisalona
-                                </a>
+                        @foreach($foodTypes['breakfast'] as $breakfast)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$breakfast->food_name }}
+                                    </a>
 
-                                <div class="line-item-mainmenu bg3-pattern"></div>
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
 
-                                <div class="price-item-mainmenu txt22">
-                                    $29.79
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$breakfast->food_price}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <span class="info-item-mainmenu txt23">
+                                <span class="info-item-mainmenu txt23">
 								Sed fermentum eros vitae eros
 							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Aenean eu
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $19.35
-                                </div>
                             </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Feugiat maximus neque pharetra
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Sed feugiat
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $12.19
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Consectetur
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $21.89
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Etiam cursus facilisis tortor
-							</span>
-                        </div>
+                        @endforeach
                     </div>
+
+
+                    <div class="wrap-item-mainmenu p-b-22">
+                        <h3 class="tit-mainmenu tit10 p-b-25">
+                            LUNCH
+                        </h3>
+
+                        <!-- Item mainmenu -->
+                        @foreach($foodTypes['lunch'] as $lunch)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$lunch->food_name }}
+                                    </a>
+
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
+
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$lunch->food_price}}
+                                    </div>
+                                </div>
+
+                                <span class="info-item-mainmenu txt23">
+								Sed fermentum eros vitae eros
+							</span>
+                            </div>
+                        @endforeach
+                    </div>
+
+
+                    <div class="wrap-item-mainmenu p-b-22">
+                        <h3 class="tit-mainmenu tit10 p-b-25">
+                            DINNER
+                        </h3>
+
+                        <!-- Item mainmenu -->
+                        @foreach($foodTypes['dinner'] as $dinner)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$dinner->food_name }}
+                                    </a>
+
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
+
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$dinner->food_price}}
+                                    </div>
+                                </div>
+
+                                <span class="info-item-mainmenu txt23">
+								Sed fermentum eros vitae eros
+							</span>
+                            </div>
+                        @endforeach
+                    </div>
+
 
                     <div class="wrap-item-mainmenu p-b-22">
                         <h3 class="tit-mainmenu tit10 p-b-25">
                             Drinks
                         </h3>
-
                         <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Vivamus pretium
-                                </a>
+                        @foreach($drinks as $drink)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$drink->drink_name}}
+                                    </a>
 
-                                <div class="line-item-mainmenu bg3-pattern"></div>
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
 
-                                <div class="price-item-mainmenu txt22">
-                                    $29.79
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$drink->drink_price}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <span class="info-item-mainmenu txt23">
+                                <span class="info-item-mainmenu txt23">
 								Sed fermentum eros vitae eros
 							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Duis pharetra ligula
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $19.35
-                                </div>
                             </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Feugiat maximus neque pharetra
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    In eu dolor
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $53.34
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Feugiat maximus
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $62.45
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
-							</span>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
 
                 <div class="col-md-10 col-lg-6 p-l-35 p-l-15-lg m-l-r-auto">
                     <div class="wrap-item-mainmenu p-b-22">
                         <h3 class="tit-mainmenu tit10 p-b-25">
-                            Main
+                            Meal
                         </h3>
-
+                    @foreach($foodTypes['meal'] as $meal)
                         <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Duis sed aliquet
-                                </a>
+                            <div class="item-mainmenu m-b-36"
+                            >
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$meal->food_name}}
 
-                                <div class="line-item-mainmenu bg3-pattern"></div>
+                                    </a>
 
-                                <div class="price-item-mainmenu txt22">
-                                    $31.18
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
+
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$meal->food_price}}
+
+                                    </div>
                                 </div>
-                            </div>
 
-                            <span class="info-item-mainmenu txt23">
+                                <span class="info-item-mainmenu txt23">
 								Proin lacinia nisl ut ultricies posuere nulla
 							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Suspendisse
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $70.25
-                                </div>
                             </div>
+                        @endforeach
 
-                            <span class="info-item-mainmenu txt23">
-								Feugiat maximus neque pharetra
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Scelerisque sed
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $36.19
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Etiam cursus facilisis tortor
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Mollis nulla
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $19.50
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Convallis augue
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $29.15
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Maecenas tristique
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $29.79
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Feugiat maximus neque pharetra
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Duis tincidunt
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $19.35
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-                        </div>
                     </div>
 
                     <div class="wrap-item-mainmenu p-b-22">
                         <h3 class="tit-mainmenu tit10 p-b-25">
-                            Dessert
+                            Sittan
                         </h3>
 
                         <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    tempus aliquet
-                                </a>
+                        @foreach($foodTypes['sitan'] as $sittan)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$sittan->food_name}}
+                                    </a>
 
-                                <div class="line-item-mainmenu bg3-pattern"></div>
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
 
-                                <div class="price-item-mainmenu txt22">
-                                    $9.79
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$sittan->food_price}}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <span class="info-item-mainmenu txt23">
+                                <span class="info-item-mainmenu txt23">
 								Proin lacinia nisl ut ultricies posuere nulla
 							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    scelerisque
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $19.35
-                                </div>
                             </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
-							</span>
-                        </div>
-
-                        <!-- Item mainmenu -->
-                        <div class="item-mainmenu m-b-36">
-                            <div class="flex-w flex-b m-b-3">
-                                <a href="#" class="name-item-mainmenu txt21">
-                                    Cras maximus
-                                </a>
-
-                                <div class="line-item-mainmenu bg3-pattern"></div>
-
-                                <div class="price-item-mainmenu txt22">
-                                    $5.79
-                                </div>
-                            </div>
-
-                            <span class="info-item-mainmenu txt23">
-								Duis pharetra ligula at urna dignissim
-							</span>
-                        </div>
+                        @endforeach
                     </div>
+
+                    <div class="wrap-item-mainmenu p-b-22">
+                        <h3 class="tit-mainmenu tit10 p-b-25">
+                            DESERT
+                        </h3>
+
+                        <!-- Item mainmenu -->
+                        @foreach($foodTypes['desert'] as $desert)
+                            <div class="item-mainmenu m-b-36">
+                                <div class="flex-w flex-b m-b-3">
+                                    <a href="#" class="name-item-mainmenu txt21">
+                                        {{$desert->food_name}}
+                                    </a>
+
+                                    <div class="line-item-mainmenu bg3-pattern"></div>
+
+                                    <div class="price-item-mainmenu txt22">
+                                        Rs. {{$desert->food_price}}
+                                    </div>
+                                </div>
+
+                                <span class="info-item-mainmenu txt23">
+								Proin lacinia nisl ut ultricies posuere nulla
+							</span>
+                            </div>
+                        @endforeach
+                    </div>
+
                 </div>
             </div>
         </div>
     </section>
 
+    <!---Drinks --->
+    <section class="section-lunch bgwhite">
+        <div class="header-lunch parallax0 parallax100"
+             style="background-image: url(custom/frontend/image/drinks1_edt.jpg);">
+            <div class="bg1-overlay t-center p-t-170 p-b-165">
+                <h2 class="tit4 t-center">
+                    Drinks
+                </h2>
+            </div>
+        </div>
 
+        <div class="container">
+            <div class="row p-t-108 p-b-70">
+                @foreach($drinkss as $drink)
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a href="#"><img src="{{asset('custom/backend/images/drink/'.$drink->image)}}"
+                                                 alt="IMG-MENU"></a>
+                            </div>
+
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a href="#" class="txt21 m-b-3">
+                                    {{$drink->drink_name}}
+                                </a>
+
+                                <span class="txt23">
+								Aenean pharetra tortor dui in pellentesque
+							</span>
+
+                                <span class="txt22 m-t-20">
+								Rs. {{$drink->drink_price}}
+							</span>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!-- Lunch -->
     <section class="section-lunch bgwhite">
-        <div class="header-lunch parallax0 parallax100" style="background-image: url(custom/frontend/images/header-menu-01.jpg);">
+        <div class="header-lunch parallax0 parallax100"
+             style="background-image: url(custom/frontend/image/lunch2.jpg);">
             <div class="bg1-overlay t-center p-t-170 p-b-165">
                 <h2 class="tit4 t-center">
                     Lunch
@@ -402,135 +272,31 @@
 
         <div class="container">
             <div class="row p-t-108 p-b-70">
-                <div class="col-md-8 col-lg-6 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-01.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
+                @foreach($lunchs as $lunch)
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30">
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a href="#"><img src="{{asset('custom/backend/images/food/'.$lunch->image)}}"
+                                                 alt="IMG-MENU"></a>
+                            </div>
 
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Sed varius
-                            </a>
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a href="#" class="txt21 m-b-3">
+                                    {{$lunch->food_name}}
+                                </a>
 
-                            <span class="txt23">
+                                <span class="txt23">
 								Aenean pharetra tortor dui in pellentesque
 							</span>
 
-                            <span class="txt22 m-t-20">
-								$29.79
+                                <span class="txt22 m-t-20">
+								Rs. {{$lunch->food_price}}
 							</span>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-03.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                tempus aliquet
-                            </a>
-
-                            <span class="txt23">
-								Aenean condimentum ante erat
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$45.09
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-05.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Duis massa
-                            </a>
-
-                            <span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$12.75
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-8 col-lg-6 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-02.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                sbrisalona
-                            </a>
-
-                            <span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$29.79
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-06.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Cras eget magna
-                            </a>
-
-                            <span class="txt23">
-								Sed fermentum eros vitae eros
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$45.09
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/lunch-06.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Nullam maximus
-                            </a>
-
-                            <span class="txt23">
-								Duis massa nibh porttitor nec imperdiet eget
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$12.75
-							</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -538,7 +304,8 @@
 
     <!-- Dinner -->
     <section class="section-dinner bgwhite">
-        <div class="header-dinner parallax0 parallax100" style="background-image: url(custom/frontend/images/header-menu-02.jpg);">
+        <div class="header-dinner parallax0 parallax100"
+             style="background-image: url(custom/frontend/image/dinner2.jpg);">
             <div class="bg1-overlay t-center p-t-170 p-b-165">
                 <h2 class="tit4 t-center">
                     Dinner
@@ -548,135 +315,32 @@
 
         <div class="container">
             <div class="row p-t-108 p-b-70">
-                <div class="col-md-8 col-lg-6 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-01.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
+                @foreach($dinners as $dinner)
+                    <div class="col-md-8 col-lg-6 m-l-r-auto">
+                        <!-- Block3 -->
+                        <div class="blo3 flex-w flex-col-l-sm m-b-30"
+                        >
+                            <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
+                                <a href="#"><img src="{{asset('custom/backend/images/food/'.$dinner->image)}}"
+                                                 alt="IMG-MENU"></a>
+                            </div>
 
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Maecenas tristique
-                            </a>
+                            <div class="text-blo3 size21 flex-col-l-m">
+                                <a href="#" class="txt21 m-b-3">
+                                    {{$dinner->food_name}}
+                                </a>
 
-                            <span class="txt23">
+                                <span class="txt23">
 								Aenean pharetra tortor dui in pellentesque
 							</span>
 
-                            <span class="txt22 m-t-20">
-								$29.79
+                                <span class="txt22 m-t-20">
+								Rs. {{$dinner->food_price}}
 							</span>
+                            </div>
                         </div>
                     </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-03.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Pine nut sbrisalona
-                            </a>
-
-                            <span class="txt23">
-								Aenean condimentum ante erat
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$45.09
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-05.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Suspendisse eu
-                            </a>
-
-                            <span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$12.75
-							</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-8 col-lg-6 m-l-r-auto">
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-02.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Cras maximus
-                            </a>
-
-                            <span class="txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$29.79
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-04.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Pine nut sbrisalona
-                            </a>
-
-                            <span class="txt23">
-								Sed fermentum eros vitae eros
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$45.09
-							</span>
-                        </div>
-                    </div>
-
-                    <!-- Block3 -->
-                    <div class="blo3 flex-w flex-col-l-sm m-b-30">
-                        <div class="pic-blo3 size20 bo-rad-10 hov-img-zoom m-r-28">
-                            <a href="#"><img src="{{asset('custom/frontend/images/dinner-06.jpg')}}" alt="IMG-MENU"></a>
-                        </div>
-
-                        <div class="text-blo3 size21 flex-col-l-m">
-                            <a href="#" class="txt21 m-b-3">
-                                Tempor malesuada
-                            </a>
-
-                            <span class="txt23">
-								Duis massa nibh porttitor nec imperdiet eget
-							</span>
-
-                            <span class="txt22 m-t-20">
-								$12.75
-							</span>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

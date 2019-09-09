@@ -14,7 +14,7 @@ input[type=file]{
 }
 
 .drinks_pro:hover{
-    transform: scale(8);
+    transform: scale(4);
 }
 
 #select_food_det{

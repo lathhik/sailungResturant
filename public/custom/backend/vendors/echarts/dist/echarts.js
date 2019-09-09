@@ -15865,7 +15865,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Mouse move handler
 	         * @inner
-	         * @param {Event} event
+	         * @param {models.backend.Event} event
 	         */
 	        mousemove: function (event) {
 	            event = normalizeEvent(this.root, event);
@@ -15896,7 +15896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Mouse out handler
 	         * @inner
-	         * @param {Event} event
+	         * @param {models.backend.Event} event
 	         */
 	        mouseout: function (event) {
 	            event = normalizeEvent(this.root, event);
@@ -15923,7 +15923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Touch开始响应函数
 	         * @inner
-	         * @param {Event} event
+	         * @param {models.backend.Event} event
 	         */
 	        touchstart: function (event) {
 	            // Default mouse behaviour should not be disabled here.
@@ -15948,7 +15948,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Touch移动响应函数
 	         * @inner
-	         * @param {Event} event
+	         * @param {models.backend.Event} event
 	         */
 	        touchmove: function (event) {
 	            // eventTool.stop(event);// 阻止浏览器默认事件，重要
@@ -15967,7 +15967,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        /**
 	         * Touch结束响应函数
 	         * @inner
-	         * @param {Event} event
+	         * @param {models.backend.Event} event
 	         */
 	        touchend: function (event) {
 	            // eventTool.stop(event);// 阻止浏览器默认事件，重要
@@ -16414,7 +16414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	     * 停止冒泡和阻止默认行为
 	     * @memberOf module:zrender/core/event
 	     * @method
-	     * @param {Event} e : event对象
+	     * @param {models.backend.Event} e : event对象
 	     */
 	    var stop = isDomLevel2
 	        ? function (e) {

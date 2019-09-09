@@ -8,6 +8,6 @@ class Table extends Model
 {
     public function tableType()
     {
-        return $this->belongsTo('App/models/backend/TableTypes');
+        return $this->belongsTo('App\models\backend\TableTypes','table_types_id','id');
     }
 }

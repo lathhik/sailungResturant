@@ -1223,7 +1223,7 @@ var requirejs, require, define;
         /**
          * Given an event from a script node, get the requirejs info from it,
          * and then removes the event listeners on the node.
-         * @param {Event} evt
+         * @param {models.backend.Event} evt
          * @returns {Object}
          */
         function getScriptData(evt) {
@@ -1693,7 +1693,7 @@ var requirejs, require, define;
             /**
              * callback for script loads, used to check status of loading.
              *
-             * @param {Event} evt the event from the browser for the script
+             * @param {models.backend.Event} evt the event from the browser for the script
              * that was loaded.
              */
             onScriptLoad: function (evt) {

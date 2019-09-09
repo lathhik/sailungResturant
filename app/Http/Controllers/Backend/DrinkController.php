@@ -6,6 +6,7 @@ use App\models\backend\Drink;
 use App\models\backend\DrinkType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class DrinkController extends Controller
@@ -63,8 +64,8 @@ class DrinkController extends Controller
                 mkdir(public_path('custom/backend/images/drink'));
             }
 
-            $image->resize(300, null, function ($ar) {
-                $ar->aspectRatio();
+            $image->resize(720, 540, function ($ar) {
+//                $ar->aspectRatio();
             })->save(public_path('custom/backend/images/drink/' . $newName));
 
             $drink->image = $newName;
@@ -134,8 +135,8 @@ class DrinkController extends Controller
                 unlink(public_path('custom/backend/images/drink/' . $drink->image));
             }
 
-            $image->resize(300, null, function ($ar) {
-                $ar->aspectRatio();
+            $image->resize(720, 540, function ($ar) {
+//                $ar->aspectRatio();
             })->save(public_path('custom/backend/images/drink/' . $newName));
 
             $drink->image = $newName;
@@ -164,12 +165,16 @@ class DrinkController extends Controller
     {
         $drink = Drink::find($id);
 
-        if (file_exists(public_path('custom/backend/images/drink/' . $drink->image))) {
-            unlink(public_path('custom/backend/images/drink/' . $drink->image));
+        if (Auth::guard('admin')->user()->privilege != 'Admin') {
+            if (file_exists(public_path('custom/backend/images/drink/' . $drink->image))) {
+                unlink(public_path('custom/backend/images/drink/' . $drink->image));
+            }
+            if ($drink->delete()) {
+                return redirect()->back()->with('success', 'Drink was successfully deleted');
+            }
+            return redirect()->back()->with('fail', 'There was some problem');
         }
-        if ($drink->delete()) {
-            return redirect()->back()->with('success', 'Drink was successfully deleted');
-        }
-        return redirect()->back()->with('fail', 'There was some problem');
+        return redirect()->back()->with('fail', 'Invalid Access');
+
     }
 }

@@ -7,6 +7,7 @@ use App\models\backend\Food;
 use App\models\backend\FoodDetails;
 use App\models\backend\FoodType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class FoodController extends Controller
@@ -63,7 +64,7 @@ class FoodController extends Controller
                 mkdir(public_path('custom/backend/images/food'));
             }
 
-            $image->resize(300, null, function ($ar) {
+            $image->resize(720, 540, function ($ar) {
                 $ar->aspectRatio();
             })->save(public_path('custom/backend/images/food/' . $newName));
         }
@@ -111,7 +112,8 @@ class FoodController extends Controller
     {
 
         $this->validate($request, [
-            'food_name' => 'required|regex:/^[a-z]*\s(.*)/',
+//            'food_name' => 'required|regex:/^[a-z]*\s(.*)/',
+            'food_name' => 'required',
             'food_price' => 'required|numeric',
 //           'image'=>'required|image'
         ]);
@@ -130,8 +132,8 @@ class FoodController extends Controller
                 unlink(public_path('custom/backend/images/food/' . $food->image));
             }
 
-            $image->resize(600, null, function ($ar) {
-                $ar->aspectRatio();
+            $image->resize(720, 540, function ($ar) {
+//                $ar->aspectRatio();
             })->save(public_path('custom/backend/images/food/' . $newName));
 
             $food->image = $newName;
@@ -176,13 +178,15 @@ class FoodController extends Controller
     {
         $food = Food::find($id);
 
-        if (file_exists(public_path('custom/backend/images/food/' . $food->image))) {
-            unlink(public_path('custom/backend/images/food/' . $food->image));
+        if (Auth::guard('admin')->user()->privilege != 'Admin') {
+            if (file_exists(public_path('custom/backend/images/food/' . $food->image))) {
+                unlink(public_path('custom/backend/images/food/' . $food->image));
+            }
+            if ($food->delete()) {
+                return redirect()->back()->with('success', 'Food was successfully deleted');
+            }
+            return redirect()->back()->with('fail', 'There was some problem');
         }
-
-        if ($food->delete()) {
-            return redirect()->back()->with('success', 'Food was successfully deleted');
-        }
-        return redirect()->back()->with('fail', 'There was some problem');
+        return redirect()->back()->with('fail', 'Invalid Access');
     }
 }

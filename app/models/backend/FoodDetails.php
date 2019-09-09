@@ -8,7 +8,12 @@ class FoodDetails extends Model
 {
     protected $table = 'foods_foods_types';
 
-    public function food(){
+    public function food()
+    {
         return $this->belongsTo('App\models\backend\Food');
+    }
+    public function foodType()
+    {
+        return $this->belongsTo('App\models\backend\FoodType');
     }
 }

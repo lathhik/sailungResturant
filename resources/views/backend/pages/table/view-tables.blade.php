@@ -36,6 +36,7 @@
                             <th class="text-center">Table_Name</th>
                             <th class="text-center">Booking_Price</th>
                             <th class="text-center">Table_Type</th>
+                            <th class="text-center">Availability</th>
                             <th class="text-center">Action</th>
                         </tr>
                         </thead>
@@ -52,6 +53,15 @@
                                         @endif
                                     @endforeach
                                 </td>
+                                <td>
+                                    @if($table->availability == 1)
+                                        <a href="{{route('update-availability',$table->id)}}"><span
+                                                class="btn btn-sm btn-success">Available</span></a>
+                                    @else
+                                        <a href="{{route('update-availability',$table->id)}}"><span
+                                                class="btn btn-sm btn-danger">Booked</span></a>
+                                    @endif
+                                </td>
 
                                 <td width="30%">
                                     <a href="{{route('edit-table', $table->id)}}" class="btn btn-sm btn-primary"><i
@@ -64,7 +74,7 @@
                         @empty
                             <tr>
                                 <td colspan="11">No Tables were added. Click <a class="btn btn-sm btn-danger"
-                                                                               href="{{route('add-table')}}">Here</a>
+                                                                                href="{{route('add-table')}}">Here</a>
                                     to add Table
                                 </td>
                             </tr>

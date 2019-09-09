@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\models\backend\Table;
 use App\models\backend\TableTypes;
+use App\models\frontend\BookingTable;
 use Illuminate\Http\Request;
 
 class TableController extends Controller
@@ -111,6 +112,25 @@ class TableController extends Controller
     }
 
     /**
+     *  updates the table availability (booked or available)
+     */
+    public function updateAvailabilityAction($id)
+    {
+        $table = Table::find($id);
+
+        if ($table->availability == 1) {
+            $table->availability = 0;
+        } elseif ($table->availability == 0) {
+            $table->availability = 1;
+        }
+
+        if ($table->update()) {
+            return redirect()->back()->with('success', 'Table availability was successfully updated');
+        }
+        return redirect()->back()->with('fail', 'There was some problem');
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param \App\models\Table $table
@@ -124,5 +144,39 @@ class TableController extends Controller
             return redirect()->back()->with('success', 'Table was deleted successfully');
         }
         return redirect()->back()->with('fail', 'There was some problem');
+    }
+
+    public function viewBookedTables()
+    {
+        $bookedTables = BookingTable::all();
+        return view('backend/pages/table/view-booked-tables')->with('bookedTables', $bookedTables);
+
+    }
+
+    public function viewAvailableTables()
+    {
+        $table_types = TableTypes::all();
+        return view('backend/pages/table/view-available-tables')->with('table_types', $table_types);
+    }
+
+    public function searchBookedTable(Request $request)
+    {
+        $tables = Table::where('table_types_id', '=', $request->table_type_id)->get();
+        $freeTablesId = [];
+        foreach ($tables as $table) {
+            $bookings = BookingTable::where('table_id', '=', $table->id)->where('booking_date', '=', $request->date)->get();
+
+            $countBookings = count($bookings);
+            if ($countBookings == 0) {
+                array_push($freeTablesId, $table->id);
+            }
+        }
+
+        $freeTables = [];
+        foreach ($freeTablesId as $id){
+            $tbles = Table::find($id);
+            array_push($freeTables, $tbles);
+        }
+        return view('backend/pages/table/view-available-tables')->with('freeTables', $freeTables);
     }
 }

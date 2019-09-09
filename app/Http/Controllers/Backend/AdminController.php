@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\models\backend\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Image;
 
 class AdminController extends Controller
 {
+
     /**
      * Display dashboard.
      *
@@ -16,7 +18,11 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('backend.pages.dashboard');
+        if (Auth::guard('admin')->user()->privilege != 'Admin') {
+
+            return view('backend.pages.dashboard');
+        }
+        return view('backend.pages.admin-dashboard');
     }
 
     /**

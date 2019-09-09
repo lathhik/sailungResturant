@@ -6,9 +6,9 @@
             <div class="wrap_header trans-0-3">
                 <!-- Logo -->
                 <div class="logo">
-                    <a href="{{route('home')}}">
-                        <img src="{{asset('custom/frontend/images/icons/logo.png')}}" alt="IMG-LOGO"
-                             data-logofixed="{{asset('custom/frontend/images/icons/logo2.png')}}">
+                    <a href="{{route('home-page')}}">
+                        <img src="{{asset('custom/frontend/images/icons/sailung_logo4.png')}}" alt="IMG-LOGO"
+                             data-logofixed="{{asset('custom/frontend/images/icons/sailung_logo5.png')}}">
                     </a>
                 </div>
 
@@ -16,15 +16,15 @@
                 <div class="wrap_menu p-l-45 p-l-0-xl">
                     <nav class="menu">
                         <ul class="main_menu">
-                            <li>
-                                <a href="{{route('home')}}">Home</a>
+                            <li class="{{Request::is('home-page')?'active':''}}">
+                                <a href="{{route('home-page')}}"><span class="active">Home</span></a>
                             </li>
 
-                            <li>
+                            <li class="{{Request::is('menu')?'active':''}}">
                                 <a href="{{route('menu')}}">Menu</a>
                             </li>
 
-                            <li>
+                            <li class="active">
                                 <a href="{{route('reservation')}}">Reservation</a>
                             </li>
 

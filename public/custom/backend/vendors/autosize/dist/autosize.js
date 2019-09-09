@@ -41,7 +41,7 @@
 	} catch (e) {
 		// IE does not support `new Event()`
 		createEvent = function (name) {
-			var evt = document.createEvent('Event');
+			var evt = document.createEvent('models.backend.Event');
 			evt.initEvent(name, true, false);
 			return evt;
 		};

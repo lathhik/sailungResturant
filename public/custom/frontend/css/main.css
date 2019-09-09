@@ -574,8 +574,8 @@ input[type="date" i] {
 
 .main_menu > li > a {
   font-family: Montserrat;
-  font-weight: 400;
-  font-size: 14px;
+  font-weight: 800;
+  font-size: 16px;
   text-transform: uppercase;
   color: white;
   padding: 15px;
@@ -1317,7 +1317,7 @@ body {padding-right: 0px !important;}
 
 .wrap-video-mo-01 {
   width: 854px;
-  height: auto;
+  height: 600px;
   position: relative;
   margin: 15px;
 }
