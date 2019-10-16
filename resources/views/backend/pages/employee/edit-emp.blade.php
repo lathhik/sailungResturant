@@ -163,6 +163,20 @@
 
                                     </div>
                                 </div>
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">About Employee
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea name="about" id="" cols="30" rows="5" class=" form-control col-md-7 col-xs-12">{{$emp->about_emp}}</textarea>
+                                        @if($errors->has('about'))
+                                            <p class="text-danger">{{$errors->first('about')}}</p>
+                                        @endif
+
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Image
                                     </label>

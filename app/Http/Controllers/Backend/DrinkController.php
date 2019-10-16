@@ -42,9 +42,12 @@ class DrinkController extends Controller
     public function addDrinkAction(Request $request)
     {
         $this->validate($request, [
-            'drink_name' => 'required',
-            'drink_price' => 'required',
+            'drink_name' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,30}$/'],
+            'drink_price' => 'required|numeric',
             'drink_type' => 'required',
+            'description' => 'required',
             'image' => 'required|image'
         ]);
 
@@ -53,6 +56,7 @@ class DrinkController extends Controller
         $drink->drink_name = $request->drink_name;
         $drink->drink_price = $request->drink_price;
         $drink->drink_type_id = $request->drink_type;
+        $drink->description = $request->description;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -113,9 +117,13 @@ class DrinkController extends Controller
     {
 
         $this->validate($request, [
-            'drink_name' => 'required',
-            'drink_price' => 'required',
+            'drink_name' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,30}$/'
+            ],
+            'drink_price' => 'required|numeric',
             'drink_type' => 'required',
+            'description' => 'required'
 
         ]);
 
@@ -124,6 +132,7 @@ class DrinkController extends Controller
         $drink->drink_name = $request->drink_name;
         $drink->drink_price = $request->drink_price;
         $drink->drink_type_id = $request->drink_type;
+        $drink->description = $request->description;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');

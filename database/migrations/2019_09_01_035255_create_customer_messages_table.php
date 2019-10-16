@@ -14,7 +14,7 @@ class CreateCustomerMessagesTable extends Migration
     public function up()
     {
         Schema::create('customer_messages', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('c_name');
             $table->string('c_email');
             $table->bigInteger('c_phone');

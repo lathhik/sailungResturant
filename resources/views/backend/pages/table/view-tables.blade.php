@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('title', 'ViewTables')
 @section('content')
-    <div class="right_col" role="main" style="height: inherit">
+    <div class="right_col" role="main">
         <div class="col-md-12 col-sm-12 col-xs-12">
             @include('messages.succFail')
             <div class="x_panel">
@@ -83,6 +83,7 @@
                     </table>
                 </div>
             </div>
+            <div class="float-right">{{$tables->links()}}</div>
         </div>
     </div>
 @endsection

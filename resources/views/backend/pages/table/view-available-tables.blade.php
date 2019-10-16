@@ -52,7 +52,10 @@
                             @endforeach
                             </tbody>
                         </table>
-
+                        <a href="{{route('available-tables')}}">
+                            <button class="btn btn-primary btn-lg float-right" style="margin-left: 900px">Back
+                            </button>
+                        </a>
                     </div>
                 @endif
             </div>

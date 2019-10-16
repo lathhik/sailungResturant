@@ -75,7 +75,6 @@ class FoodTypeController extends Controller
         ]);
 
         $food_type = FoodType::find($id);
-
         $food_type->food_type = $request->food_type;
 
         if ($food_type->save()) {

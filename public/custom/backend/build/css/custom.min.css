@@ -1871,10 +1871,10 @@ span.right {
 .tile_count .tile_stats_count:before {
     content: "";
     position: absolute;
-    left: 0;
-    height: 65px;
-    border-left: 2px solid #ADB2B5;
-    margin-top: 10px
+    left: 5px;
+    height: 150px;
+    border-left: 4px solid #4cae4c;
+    margin-top: 20px
 }
 
 @media (min-width: 992px) {

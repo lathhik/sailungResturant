@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\models\backend\Event;
+use App\models\frontend\BookingEvent;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Validation\Rule;
@@ -16,7 +17,6 @@ class EventController extends Controller
     {
         return view('backend/pages/event/add-event');
     }
-
 
 
     public function addEventAction(Request $request)
@@ -59,13 +59,11 @@ class EventController extends Controller
     }
 
 
-
     public function viewEvent()
     {
         $events = Event::all();
         return view('backend/pages/event/view-event')->with('events', $events);
     }
-
 
 
     public function editEvent($id)
@@ -74,7 +72,6 @@ class EventController extends Controller
 
         return view('backend/pages/event/edit-event')->with('event', $event);
     }
-
 
 
     public function editEventAction(Request $request, $id)
@@ -128,6 +125,12 @@ class EventController extends Controller
             return redirect()->route('view-event')->with('success', 'Event was successfully updated');
         }
         return redirect()->route('view-event')->with('fail', 'There was some problem');
+    }
+
+    public function viewBookedEvents()
+    {
+        $bookedEvents = BookingEvent::all();
+        return view('backend/pages/event/view-booked-events')->with('bookedEvents', $bookedEvents);
     }
 
 

@@ -150,10 +150,13 @@
 							</span>
 
                                 <p class="t-center">
-                                    Donec porta eleifend mauris ut effici-tur. Quisque non velit vestibulum, lob-ortis
-                                    mi
-                                    eget, rhoncus nunc
+                                    {{str_limit($chef->about_emp,50)}}
                                 </p>
+                                <br>
+                                <a href="" class="dis-block txt4 m-t-30">
+                                    View Details
+                                    <i class="fa fa-long-arrow-right m-l-10"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -165,7 +168,8 @@
 
     <!-- Sign up -->
     <div class="section-signup bg1-pattern p-t-85 p-b-85">
-        <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5">
+        <form class="flex-c-m flex-w flex-col-c-m-lg p-l-5 p-r-5 " method="post" action="{{route('special-signup')}}"  >
+            @csrf
 			<span class="txt5 m-10">
 				Specials Sign up
 			</span>

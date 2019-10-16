@@ -18,11 +18,6 @@ class AdminController extends Controller
      */
     public function index()
     {
-        if (Auth::guard('admin')->user()->privilege != 'Admin') {
-
-            return view('backend.pages.dashboard');
-        }
-        return view('backend.pages.admin-dashboard');
     }
 
     /**

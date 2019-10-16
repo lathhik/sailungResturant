@@ -1,7 +1,7 @@
 <!-- footer content -->
 <footer>
     <div class="pull-right">
-        Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        Sailung Restaurant - Admin Panel  by: <a href="https://www.facebook.com/lathhik">Lathhik</a>
     </div>
     <div class="clearfix"></div>
 </footer>

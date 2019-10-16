@@ -68,6 +68,14 @@
                         @endforelse
                         </tbody>
                     </table>
+                    <div class="col-sm-12">
+                        <div class="dataTables_paginate paging_simple_numbers"
+                             id="datatable-responsive_paginate">
+                            <ul class="pagination">
+                                {{$foods->links()}}
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

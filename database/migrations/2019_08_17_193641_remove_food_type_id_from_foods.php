@@ -27,11 +27,11 @@ class RemoveFoodTypeIdFromFoods extends Migration
      */
     public function down()
     {
-        Schema::table('foods', function (Blueprint $table) {
-//            $table->dropForeign(['food_type_id']);
-            $table->dropColumn(['food_type_id']);
-        });
+//        Schema::table('foods', function (Blueprint $table) {
+////            $table->dropForeign(['food_type_id']);
+//            $table->dropColumn(['food_type_id']);
+//        });
 
-//        Schema::dropIfExists('food_type_id');
+        Schema::dropIfExists('food_type_id');
     }
 }

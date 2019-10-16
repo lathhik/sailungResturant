@@ -53,8 +53,8 @@
                     <a href="#"><i class="fa fa-facebook m-l-21" aria-hidden="true"></i></a>
                     <a href="#"><i class="fa fa-twitter m-l-21" aria-hidden="true"></i></a>
 
-                    <button class="btn-show-sidebar m-l-33 trans-0-4"></button>
                 </div>
+                <button class="login-txt"><a class="login-a" href="{{route('user-login')}}">Login</a></button>
             </div>
         </div>
     </div>

@@ -8,7 +8,8 @@ class FoodType extends Model
 {
     protected $table = 'foods_types';
 
-    public function foodFoodType(){
+    public function foodFoodType()
+    {
         return $this->hasMany('App\models\backend\FoodDetails');
     }
 }

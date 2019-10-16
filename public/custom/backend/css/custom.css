@@ -1,26 +1,51 @@
-#pro{
+.body {
+    display: block;
+}
+
+
+#pro {
     /*max-width:100px;*/
     border-radius: 50%;
 
 
 }
-input[type=file]{
+
+#pro-blog:hover {
+    transform: scale(2);
+    z-index: 1000;
+}
+
+
+input[type=file] {
     /*padding:10px;*/
     /*background:#2d2d2d;*/
 }
 
-#pro:hover{
+#pro:hover {
     transform: scale(2);
 }
 
-.drinks_pro:hover{
+#event_pic:hover {
+    transform: scale(3);
+}
+
+.drinks_pro:hover {
     transform: scale(4);
 }
 
-#select_food_det{
+#select_food_det {
     height: 150px;
 }
 
-#select_food_types{
+#select_food_types {
     height: 200px;
 }
+
+
+/* style for dashboard js*/
+
+.hidden {
+    display: none;
+}
+
+

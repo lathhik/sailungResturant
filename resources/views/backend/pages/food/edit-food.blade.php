@@ -52,7 +52,8 @@
                                         <div class="checkbox">
                                             <label>
                                                 @foreach($food_types as $food_type)
-                                                    <input type="checkbox" value="{{$food_type->id}}" name="food_types[]"
+                                                    <input type="checkbox" value="{{$food_type->id}}"
+                                                           name="food_types[]"
                                                            @foreach ($food->foodFoodType as $mFoodType)
                                                            @if($mFoodType->food_type_id == $food_type->id)
                                                            checked
@@ -62,6 +63,9 @@
                                                 @endforeach
                                             </label>
                                         </div>
+                                        @if($errors->has('foods_types[]'))
+                                            <p class="text-danger">{{$errors->first('foods_types[]')}}</p>
+                                        @endif
 
                                         {{--                                        <select name="food_type[]" id="select_food_types"--}}
                                         {{--                                                class="form-control col-md-7 col-xs-12"--}}
@@ -86,6 +90,18 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last_name">Food
+                                        Description
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea name="description" id="" cols="20" rows="5"
+                                                  class="form-control">{{$food->description}}</textarea>
+                                        @if($errors->has('description'))
+                                            <p class="text-danger">{{$errors->first('description')}}</p>
+                                        @endif
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Image

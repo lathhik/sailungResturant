@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\frontend;
 
+use App\models\backend\Blog;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -14,7 +17,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend/home');
+
+//        $date_time = Carbon::now();
+//        $date_time_now = $date_time->toDateTimeString();
+        $latest_blogs = Blog::where('created_at', '>=', Carbon::now()->subDays(7))->orderBy('created_at','DESC')->limit(3)->get();
+        return view('frontend/home', compact('latest_blogs'));
     }
 
     /**

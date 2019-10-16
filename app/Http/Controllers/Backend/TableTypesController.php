@@ -38,7 +38,7 @@ class TableTypesController extends Controller
     public function addTableTypesAction(Request $request)
     {
         $this->validate($request, [
-            'table_type' => 'required|min:3'
+            'table_type' => 'required|min:3|unique:table_types,table_types'
         ]);
 
         $table_type = new TableTypes();

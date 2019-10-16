@@ -14,4 +14,13 @@ class MenuController extends Controller
     {
         return view('frontend/pages/menu');
     }
+
+    /**
+     *  show the food details page
+     */
+    public function viewFoodDetails()
+    {
+        return view('frontend/details/view-food-details');
+    }
+
 }

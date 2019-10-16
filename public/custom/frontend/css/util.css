@@ -1748,7 +1748,7 @@
 .m-l-30 {margin-left: 30px;}
 .m-l-31 {margin-left: 31px;}
 .m-l-32 {margin-left: 32px;}
-.m-l-33 {margin-left: 33px;}
+.   m-l-33 {margin-left: 33px;}
 .m-l-34 {margin-left: 34px;}
 .m-l-35 {margin-left: 35px;}
 .m-l-36 {margin-left: 36px;}
@@ -3085,8 +3085,8 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 .txt4 {
 	font-family: Montserrat;
 	font-weight: 400;
-	font-size: 12px;
-	color: #222222;
+	font-size: 14px;
+	color: black;
 	text-transform: uppercase;
 	letter-spacing: 1px;
 }
@@ -3520,7 +3520,8 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 }
 
 .size30 {
-	max-width: 266px;
+	/*max-width: 266px;*/
+	max-width: 280px;
 	height: 50px;
 }
 

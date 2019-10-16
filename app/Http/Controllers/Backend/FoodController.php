@@ -19,7 +19,7 @@ class FoodController extends Controller
      */
     public function index()
     {
-        $foods = Food::all();
+        $foods = Food::paginate(10);
         return view('backend/pages/food/view-food')->with('foods', $foods);
     }
 
@@ -44,8 +44,12 @@ class FoodController extends Controller
     {
         $this->validate($request, [
 //            'food_name' => 'required|regex:/^[a-z]*\s(.*)/',
-            'food_name' => 'required',
+            'food_name' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,30}$/'
+            ],
             'food_price' => 'required|numeric',
+            'description' => 'required|min:50',
             'image' => 'required|image'
         ]);
 
@@ -53,6 +57,7 @@ class FoodController extends Controller
 
         $food->food_name = $request->food_name;
         $food->food_price = $request->food_price;
+        $food->description = $request->description;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -113,14 +118,20 @@ class FoodController extends Controller
 
         $this->validate($request, [
 //            'food_name' => 'required|regex:/^[a-z]*\s(.*)/',
-            'food_name' => 'required',
+            'food_name' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,30}$/'
+            ],
             'food_price' => 'required|numeric',
+            'description' => 'required|min:50',
+
 //           'image'=>'required|image'
         ]);
 
         $food = Food::find($id);
         $food->food_name = $request->food_name;
         $food->food_price = $request->food_price;
+        $food->description = $request->description;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');

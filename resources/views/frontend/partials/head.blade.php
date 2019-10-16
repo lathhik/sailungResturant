@@ -38,5 +38,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('custom/frontend/css/util.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('custom/frontend/css/main.css')}}">
     <!--===============================================================================================-->
+    <!-- Custom css -->
+    <link rel="stylesheet" type="text/css" href="{{asset('custom/frontend/css/custom.css')}}">
 </head>
 <body class="animsition">

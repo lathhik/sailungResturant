@@ -10,4 +10,5 @@ class Event extends Model
 
     protected $date = ['event_date', 'start_time', 'end_time'];
 
+
 }

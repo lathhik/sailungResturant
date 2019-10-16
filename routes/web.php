@@ -23,8 +23,9 @@ Route::group(['namespace' => 'frontend'], function () {
     Route::get('home', 'HomeController@index')->name('home-page');
 
     Route::get('menu', 'MenuController@index')->name('menu');
-    Route::get('reservation', 'BookingTableController@index')->name('reservation');
+    Route::get('reservation', 'BookingController@index')->name('reservation');
     Route::get('blog', 'BlogController@index')->name('blog');
+    Route::get('blog-details/{slug}', 'BlogController@viewBlogDetails')->name('blog-details');
     Route::get('gallery', 'FrontendController@showGallery')->name('gallery');
     Route::get('about', 'FrontendController@showAbout')->name('about');
     Route::get('contact', 'FrontendController@showContact')->name('contact');
@@ -38,14 +39,28 @@ Route::group(['namespace' => 'frontend'], function () {
     Route::post('special-signup', 'UserController@storeUserEmail')->name('special-signup');
     Route::get('/#special-signup', 'HomeController@index')->name('special-signup-error');
 
-    Route::post('book-table-add-user', 'BookingTableController@bookTableAddUser')->name('book-table-add-user');
-    Route::get('reservation#reservation-form', 'BookingTableController@index')->name('reservation-form-error');
+    Route::post('book-table-add-user', 'BookingController@bookTableAddUser')->name('book-table-add-user');
+    Route::get('reservation#reservation-form', 'BookingController@index')->name('reservation-form-error');
 
     Route::get('/test', 'FrontendController@test3')->name('test');
 
     Route::get('event-details', 'FrontendController@showEventDetails')->name('event-details');
+    Route::get('view-details-book-event/{id}', 'FrontendController@viewDetails')->name('view-details-book-event');
+    Route::post('book-event', 'BookingController@bookEvent')->name('book-event');
+    Route::get('view-details-book-event/{id}#event-form-error')->name('event-form-error');
 
+    Route::get('view-food-details', 'MenuController@viewFoodDetails')->name('view-food-details');
 
+    Route::post('user-comment/{id}', 'BlogCommentController@addBlogUserComment')->name('user-comment');
+    Route::get('blog-details/{id}#blog-comment-form-error')->name('blog-comment-form-error');
+
+    Route::get('blog-by-category/{id}', 'BlogController@blogByCategory')->name('blog-by-category');
+    Route::get('pop-blog/{slug}', 'BlogController@popBlog')->name('pop-blog');
+    Route::get('blog-archive/{month}', 'BlogController@blogArchive')->name('blog-archive');
+    Route::get('search-blog', 'BlogController@searchBlog')->name('search-blog');
+
+    Route::get('user-login', 'UserController@login')->name('user-login');
+    Route::get('register-user', 'UserController@registerUser')->name('register-user');
 });
 
 
@@ -59,7 +74,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     Route::group(['middleware' => ['auth:admin']], function () {
 
-        Route::get('/', 'AdminController@index')->name('dashboard');
+        Route::get('/', 'DashboardController@index')->name('dashboard');
 
         Route::get('add-admin', 'AdminController@addAdmin')->name('add-admin');
         Route::get('view-admin', 'AdminController@viewAdmin')->name('view-admin');
@@ -109,6 +124,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('delete-drink/{id}', 'DrinkController@deleteDrink')->name('delete-drink');
         Route::get('edit-drink/{id}', 'DrinkController@editDrink')->name('edit-drink');
         Route::post('update-drink/{id}', 'DrinkController@updateDrinkAction')->name('update-drink');
+
         Route::get('add-drink-type', 'DrinkTypeController@addDrinkType')->name('add-drink-type');
         Route::post('add-drink-type-action', 'DrinkTypeController@addDrinkTypeAction')->name('add-drink-type-action');
         Route::get('view-drink-type', 'DrinkTypeController@index')->name('view-drink-type');
@@ -122,6 +138,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('edit-table-type/{id}', 'TableTypesController@editTableType')->name('edit-table-type');
         Route::post('update-table-type/{id}', 'TableTypesController@updateTableTypeAction')->name('update-table-type');
         Route::get('delete-table-type/{id}', 'TableTypesController@deleteTableType')->name('delete-table-type');
+
         Route::get('add-table', 'TableController@addTable')->name('add-table');
         Route::post('add-table-action', 'TableController@addTableAction')->name('add-table-action');
         Route::get('view-table', 'TableController@viewTable')->name('view-table');
@@ -136,10 +153,26 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('edit-event/{id}', 'EventController@editEvent')->name('edit-event');
         Route::post('edit-event-action/{id}', 'EventController@editEventAction')->name('edit-event-action');
         Route::get('delete-event/{id}', 'EventController@deleteEvent')->name('delete-event');
+        Route::get('view-booked-event', 'EventController@viewBookedEvents')->name('view-booked-events');
 
         Route::get('booked-tables', 'TableController@viewBookedTables')->name('booked-tables');
         Route::get('available-tables', 'TableController@viewAvailableTables')->name('available-tables');
         Route::post('search-booked-table', 'TableController@searchBookedTable')->name('search-booked-table');
+
+
+        Route::get('add-blog-category', 'BlogCategoryController@addBlogCategory')->name('add-blog-category');
+        Route::post('add-blog-category-action', 'BlogCategoryController@addBlogCategoryAction')->name('add-blog-category-action');
+        Route::get('view-blog-category', 'BlogCategoryController@viewBlogCategory')->name('view-blog-category');
+        Route::get('edit-blog-category/{id}', 'BlogCategoryController@editBlogCategory')->name('edit-blog-category');
+        Route::post('edit-blog-category-action/{id}', 'BlogCategoryController@editBlogCategoryAction')->name('edit-blog-category-action');
+        Route::get('delete-blog-category/{id}', 'BlogCategoryController@deleteBlogCategory')->name('delete-blog-category');
+
+        Route::get('add-blog', 'BlogController@addBlog')->name('add-blog');
+        Route::post('add-blog-action', 'BlogController@addBlogAction')->name('add-blog-action');
+        Route::get('view-blog', 'BlogController@viewBlog')->name('view-blog');
+        Route::get('edit-blog/{id}', 'BlogController@editBlog')->name('edit-blog');
+        Route::post('update-blog-action/{id}', 'BlogController@updateBlogAction')->name('update-blog-action');
+        Route::get('delete-blog/{id}', 'BlogController@deleteBlog')->name('delete-blog');
 
     });
 

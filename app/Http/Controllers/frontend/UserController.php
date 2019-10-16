@@ -58,9 +58,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function login()
     {
-        //
+        return view('frontend/pages/login/user-login');
     }
 
     /**
@@ -69,9 +69,9 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function registerUser(Request $request)
     {
-        //
+        return 'test';
     }
 
     /**

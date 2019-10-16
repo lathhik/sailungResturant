@@ -67,6 +67,16 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Description
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea name="description" id="" cols="30" rows="5" class=" form-control col-md-7 col-xs-12">{{$drink->description}}</textarea>
+                                        @if($errors->has('description'))
+                                            <p class=" text-danger">{{$errors->first('description')}}</p>
+                                        @endif
+                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">Image

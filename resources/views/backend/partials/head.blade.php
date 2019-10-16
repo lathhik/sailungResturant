@@ -10,6 +10,15 @@
 
     <title>@yield('title')</title>
 
+    <!-- tinymce -->
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#blog'
+        });
+    </script>
+
+
     <!--google fonts -->
     <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap" rel="stylesheet">
 

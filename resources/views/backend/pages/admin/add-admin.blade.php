@@ -1,4 +1,4 @@
-@extends('backend.master')
+    @extends('backend.master')
 @section('title', 'AddAdmin')
 @section('content')
     <div class="right_col" role="main" style="">

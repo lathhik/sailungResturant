@@ -6,21 +6,141 @@
     >
         <!-- top tiles -->
         <div class="row tile_count">
+            <!------------- foods -------------->
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Users</span>
-                <div class="count">2500</div>
-                <span class="count_bottom"><i class="green">4% </i> From last Week</span>
+                <button class="count_top btn btn-sm btn-danger btn-block" onclick="showTotal()">
+                    <i class="fa fa-bullseye"></i> Foods
+                </button>
+                <div class="col-md-12">
+                    <div>
+                        <a onclick="showBreakfast()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top "><i class="">Breakfast</i></span></a>
+                        <a onclick="showLunch()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top"><i class="">Lunch</i></span></a>
+
+                    </div>
+                    <div class="count" id="showCountBreakfast">{{count($foodTypes['breakfast'])}}
+                        <small style="font-size: 28px">ITEMS</small>
+                    </div>
+
+                    <div class="count" id="showCountLunch">{{count($foodTypes['lunch'])}}
+                        <small style="font-size: 28px">ITEMS</small>
+                    </div>
+
+                    <div class="count" id="showCountMeal">{{count($foodTypes['meal'])}}
+                        <small style="font-size: 28px">ITEMS</small>
+                    </div>
+
+                    <div class="count" id="showCountDinner">{{count($foodTypes['dinner'])}}
+                        <small style="font-size: 28px">ITEMS</small>
+                    </div>
+
+                    <div class="count" id="showCountTotal">{{$foodCount}}
+                        <small style="font-size: 28px">ITEMS</small>
+                    </div>
+                    <div>
+                        <a onclick="showMeal()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top"><i class="">Meal</i></span></a>
+
+                        <a onclick="showDinner()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top"><i class="">Dinner</i></span></a>
+                    </div>
+                    <span class="count_bottom"><a href="{{route('view-food')}}" class="green">View Details </a></span>
+                </div>
             </div>
+            <!------------- foods -------------->
+
+
+            <!------------- drinks -------------->
+
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-clock-o"></i> Average Time</span>
-                <div class="count">123.50</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>
+                <span onclick="showCountTotalDrinks()" class="count_top btn btn-block btn-danger btn-sm"><i
+                        class="fa fa-beer"></i> Drinks</span>
+                <div class="col-md-12">
+                    <div>
+                        <a onclick="showHard()" href="#" class="btn btn-xs btn-primary text-center" style="width: 70px"><span
+                                class="count_top "><i class="">Hard</i></span></a>
+                        <a onclick="showSoft()" href="#" class="btn btn-xs btn-primary text-center" style="width: 70px"><span
+                                class="count_top"><i class="">Soft</i></span></a>
+                    </div>
+
+                    <div class="count" id="showCountTotalDrinks">{{$totalDrinks}}
+                        <small style="font-size: 20px">ITEMS</small>
+                    </div>
+
+                    <div class="count" id="showCountTotalHard">{{count($drinksTypes['hard drinks'])}}
+                        <small style="font-size: 20px">ITEMS</small>
+                    </div>
+                    <div class="count" id="showCountTotalSoft">{{count($drinksTypes['soft drinks'])}}
+                        <small style="font-size: 20px">ITEMS</small>
+                    </div>
+                    <div class="count" id="showCountTotalWine">{{count($drinksTypes['wine'])}}
+                        <small style="font-size: 20px">ITEMS</small>
+                    </div>
+                    <div class="count" id="showCountTotalBeer">{{count($drinksTypes['beer'])}}
+                        <small style="font-size: 20px">ITEMS</small>
+                    </div>
+                    <div>
+                        <a onclick="showWine()" href="#" class="btn btn-xs btn-primary text-center" style="width: 70px"><span
+                                class="count_top "><i class="">Wine</i></span></a>
+                        <a onclick="showBeer()" href="#" class="btn btn-xs btn-primary text-center" style="width: 70px"><span
+                                class="count_top"><i class="">Beer</i></span></a>
+                    </div>
+                    <span class="count_bottom"><a href="{{route('view-drink')}}" class="green">View Details </a></span>
+                </div>
             </div>
+
+            <!-------------end drinks -------------->
+
+
+            <!-------------Tables -------------->
+
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-                <span class="count_top"><i class="fa fa-user"></i> Total Males</span>
-                <div class="count green">2,500</div>
-                <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
+                <span onclick="showCountTotalBookings()" class="count_top btn btn-danger btn-block"><i
+                        class="fa fa-hotel"></i> Tables</span>
+                <div class="col-md-12">
+                    <div>
+                        <a onclick="showSingle()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top "><i class="">Single</i></span></a>
+                        <a onclick="showCouple()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top"><i class="">Couple</i></span></a>
+                    </div>
+                    <div class="count" id="showCountTotalBookings">{{$totalBookings}}
+                        <small style="font-size: 20px">BOOKED</small>
+                    </div>
+                    <div class="count" id="showCountTotalSingle">{{count($bookedTables['single'])}}
+                        <small style="font-size: 20px">BOOKED</small>
+                    </div>
+                    <div class="count" id="showCountTotalCouple">{{count($bookedTables['couple'])}}
+                        <small style="font-size: 20px">BOOKED</small>
+                    </div>
+                    <div class="count" id="showCountTotalFamily">{{count($bookedTables['family'])}}
+                        <small style="font-size: 20px">BOOKED</small>
+                    </div>
+                    <div class="count" id="showCountTotalGroup">{{count($bookedTables['group'])}}
+                        <small style="font-size: 20px">BOOKED</small>
+                    </div>
+                    <div>
+                        <a onclick="showFamily()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top "><i class="">Family</i></span></a>
+                        <a onclick="showGroup()" href="#" class="btn btn-xs btn-primary text-center"
+                           style="width: 70px"><span
+                                class="count_top"><i class="">Group</i></span></a>
+                    </div>
+                    <span class="count_bottom"><a href="{{route('booked-tables')}}" class="green">View Details </a></span>
+                </div>
             </div>
+
+            <!------------- End Tables -------------->
+
+
             <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
                 <span class="count_top"><i class="fa fa-user"></i> Total Females</span>
                 <div class="count">4,567</div>
@@ -37,6 +157,31 @@
                 <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>
             </div>
         </div>
+
+        <!-- js/styles -->
+
+        <style>
+
+        </style>
+        <script>
+            document.getElementById('showCountBreakfast').classList.add('hidden');
+            document.getElementById('showCountLunch').classList.add('hidden');
+            document.getElementById('showCountMeal').classList.add('hidden');
+            document.getElementById('showCountDinner').classList.add('hidden');
+
+            document.getElementById('showCountTotalSoft').classList.add('hidden');
+            document.getElementById('showCountTotalHard').classList.add('hidden');
+            document.getElementById('showCountTotalBeer').classList.add('hidden');
+            document.getElementById('showCountTotalWine').classList.add('hidden');
+
+            document.getElementById('showCountTotalSingle').classList.add('hidden');
+            document.getElementById('showCountTotalCouple').classList.add('hidden');
+            document.getElementById('showCountTotalFamily').classList.add('hidden');
+            document.getElementById('showCountTotalGroup').classList.add('hidden');
+        </script>
+        <!-- js/styles -->
+
+
         <!-- /top tiles -->
 
         <div class="row">

@@ -2,11 +2,17 @@
 
 namespace App\Providers;
 
+use App\models\backend\Blog;
+use App\models\backend\BlogBlogCategory;
+use App\models\backend\BlogCategory;
 use App\models\backend\Drink;
 use App\models\backend\Employee;
 use App\models\backend\Food;
 use App\models\backend\FoodType;
 use App\models\backend\TableTypes;
+use App\models\frontend\BlogComment;
+use App\models\frontend\BookingTable;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Auth;
@@ -43,12 +49,14 @@ class AppServiceProvider extends ServiceProvider
 
 
         # ================== get food types ===================
-        $foodTypes = ['breakfast' => $this->getFoodType('breakfast'),
+        $foodTypes = [
+            'breakfast' => $this->getFoodType('breakfast'),
             'sitan' => $this->getFoodType('sitan'),
             'lunch' => $this->getFoodType('lunch'),
             'meal' => $this->getFoodType('meal'),
             'dinner' => $this->getFoodType('dinner'),
-            'desert' => $this->getFoodType('desert')];
+            'desert' => $this->getFoodType('desert')
+        ];
         View::share('foodTypes', $foodTypes);
 
 
@@ -108,10 +116,63 @@ class AppServiceProvider extends ServiceProvider
         $drinks = Drink::all();
         View::share('drinks', $drinks);
 
-        # ======= share events ================
-        $events = Event::all();
+        # ======= share events =============================
+        $date = date('Y-m-d');
+        $events = Event::where('event_date', '>=', $date)->paginate(3);
+//        $events = Event::all();
         View::share('events', $events);
+
+
+        # ========== shares drinks types ====================
+
+        $drinksTypes = [
+            'hard drinks' => $this->getDrinkType('hard drinks'),
+            'soft drinks' => $this->getDrinkType('soft drinks'),
+            'wine' => $this->getDrinkType('wine'),
+            'beer' => $this->getDrinkType('beer')
+        ];
+
+        View::share('drinksTypes', $drinksTypes);
+
+        # ============= share booked tables =====================
+
+        $bookedTables = [
+            'single' => $this->getBookedTables('group'),
+            'couple' => $this->getBookedTables('couple'),
+            'family' => $this->getBookedTables('family'),
+            'group' => $this->getBookedTables('group')
+        ];
+
+        View::share('bookedTables', $bookedTables);
+
+
+        # ================== share blogs ==========================
+
+        $blogs = Blog::with('comments')->paginate(2);
+        View::share('blogs', $blogs);
+
+        $blog_categories = BlogCategory::all();
+        View::share('blog_categories', $blog_categories);
+
+        $pop_blogs = Blog::withCount('comments')->orderBy('comments_count', 'DESC')->limit(5)->get();
+        View::share('pop_blogs', $pop_blogs);
+
+        $archive_blogs = Blog::selectRaw('year(created_at) year, monthName(created_at) month, count(*) data')
+            ->groupBy('year', 'month')
+            ->orderBy('month', 'desc')
+            ->get();
+        View::share('archive_blogs', $archive_blogs);
+
+        # ================= blogs comments =========================
+        $comments = BlogComment::all();
+        View::share('comments', $comments);
+
+
     }
+
+
+    # ======= functions =================
+
 
     public function getFoodType($type)
     {
@@ -126,4 +187,32 @@ class AppServiceProvider extends ServiceProvider
         }
         return $types;
     }
+
+    public function getDrinkType($types)
+    {
+        $dtypes = [];
+        $drinks = Drink::with('drinkType')->get();
+
+        foreach ($drinks as $drink) {
+            if ($drink->drinkType->drinks_types == $types) {
+                array_push($dtypes, $drink->drink_name);
+            }
+        }
+        return $dtypes;
+    }
+
+    public function getBookedTables($tableType)
+    {
+        $date = date('Y-m-d');
+        $bookings = BookingTable::where('booking_date', '>=', $date)->get();
+        $booked_table = [];
+        foreach ($bookings as $booking) {
+            if ($booking->table->tableType->table_types == $tableType) {
+                array_push($booked_table, $booking->table->table_name);
+            }
+        }
+
+        return $booked_table;
+    }
+
 }

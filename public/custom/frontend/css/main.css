@@ -671,15 +671,21 @@ input[type="date" i] {
 }
 
 .btn-show-sidebar {
-  width: 26px;
-  height: 15px;
-  border-top: 2px solid white;
-  border-bottom: 2px solid white;
+  /*width: 26px;*/
+  /*height: 15px;*/
+  /*border-top: 2px solid black;*/
+  /*border-bottom: 2px solid white;*/
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: white;
 }
 
-.header-fixed .btn-show-sidebar {
-  border-top: 2px solid #222222;
-  border-bottom: 2px solid #222222;
+.header-fixed .btn-show-sidebar span{
+  /*border-top: 2px solid #222222;*/
+  /*border-bottom: 2px solid #222222;*/
+    color: #222222;
 }
 
 .btn-show-sidebar:hover {
@@ -1556,17 +1562,17 @@ body {padding-right: 0px !important;}
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid #e6e6e6;
-  margin: 6px;
+  border: 1px solid green;
+  margin: 4px;
 }
 
 .item-pagination:hover {
   background-color: #333333;
-  color: white;
+  color: gray;
 }
 
 .active-pagination {
-  background-color: #333333;
+  background-color: darkred;
   color: white;
 }
 

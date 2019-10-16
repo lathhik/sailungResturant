@@ -1,0 +1,63 @@
+@extends('backend.master')
+@section('title', 'AddBlog')
+@section('content')
+    <div class="right_col" role="main" style="">
+        <div class="">
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Edit Blog Category
+                                <small>You can edit Blog Category here</small>
+                            </h2>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br>
+                            @include('messages.succFail')
+                            <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left"
+                                  novalidate="" method="post"
+                                  action="{{route('edit-blog-category-action',$category->id)}}"
+                                  enctype="multipart/form-data">
+                                @csrf
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Edit Blog
+                                        Category
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" id="first-name" class="form-control col-md-7 col-xs-12"
+                                               name="category" value="{{$category->categories}}">
+                                        @if($errors->has('category'))
+                                            <p class="text-danger">{{$errors->first('category')}}</p>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-6">
+                                        <button class="btn btn-primary" type="button">Cancel</button>
+                                        <button class="btn btn-primary" type="reset">Reset</button>
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{asset('custom/backend/vendors/jquery/dist/jquery.min.js')}}"></script>
+    <script>
+        $("#blog_title").keyup(function () {
+            var str = $(this).val();
+            var trims = $.trim(str)
+            var slug = trims.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').replace(/^-|-$/g, '')
+            $("#slug").val(slug.toLowerCase())
+        })
+
+    </script>
+@endsection

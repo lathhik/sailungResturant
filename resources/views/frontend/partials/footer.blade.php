@@ -12,7 +12,7 @@
                 <ul class="m-b-70">
                     <li class="txt14 m-b-14">
                         <i class="fa fa-map-marker fs-16 dis-inline-block size19" aria-hidden="true"></i>
-                        1th floor, Khadka Tehch Building, Baneshowr, Nepal
+                        1th floor, Diprung, Baneshowr, Nepal
                     </li>
 
                     <li class="txt14 m-b-14">

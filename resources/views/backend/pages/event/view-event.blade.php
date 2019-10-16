@@ -56,7 +56,7 @@
                                               rows="5">{{$event->event_description}}</textarea>
                                 </td>
                                 <td>
-                                    <img src="{{asset('custom/backend/images/event/'.$event->event_image)}}"
+                                    <img id="event_pic" class="event_pic" src="{{asset('custom/backend/images/event/'.$event->event_image)}}"
                                          alt="img" height="50">
                                 </td>
 

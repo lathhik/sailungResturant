@@ -38,7 +38,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
+								{{str_limit($breakfast->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -66,7 +66,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
+                                    {{str_limit($lunch->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -94,7 +94,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
+                                    {{str_limit($dinner->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -121,7 +121,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Sed fermentum eros vitae eros
+								{{str_limit($drink->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -152,7 +152,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
+								{{str_limit($meal->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -180,7 +180,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
+								{{str_limit($sittan->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -207,7 +207,7 @@
                                 </div>
 
                                 <span class="info-item-mainmenu txt23">
-								Proin lacinia nisl ut ultricies posuere nulla
+								{{str_limit($desert->description,20) }}
 							</span>
                             </div>
                         @endforeach
@@ -226,6 +226,10 @@
                 <h2 class="tit4 t-center">
                     Drinks
                 </h2>
+                <a href="" class="drinks-link">
+                    View All
+                    <i class="fa fa-long-arrow-right m-l-10"></i>
+                </a>
             </div>
         </div>
 
@@ -246,7 +250,7 @@
                                 </a>
 
                                 <span class="txt23">
-								Aenean pharetra tortor dui in pellentesque
+								{{str_limit($drink->description,25)}}
 							</span>
 
                                 <span class="txt22 m-t-20">
@@ -267,6 +271,10 @@
                 <h2 class="tit4 t-center">
                     Lunch
                 </h2>
+                <a href="{{route('view-food-details')}}" class="drinks-link">
+                    View All
+                    <i class="fa fa-long-arrow-right m-l-10"></i>
+                </a>
             </div>
         </div>
 
@@ -287,7 +295,7 @@
                                 </a>
 
                                 <span class="txt23">
-								Aenean pharetra tortor dui in pellentesque
+								{{str_limit($lunch->description, 25)}}
 							</span>
 
                                 <span class="txt22 m-t-20">
@@ -310,6 +318,10 @@
                 <h2 class="tit4 t-center">
                     Dinner
                 </h2>
+                <a href="" class="drinks-link">
+                    View All
+                    <i class="fa fa-long-arrow-right m-l-10"></i>
+                </a>
             </div>
         </div>
 
@@ -331,7 +343,7 @@
                                 </a>
 
                                 <span class="txt23">
-								Aenean pharetra tortor dui in pellentesque
+								{{str_limit($dinner->description,25)}}
 							</span>
 
                                 <span class="txt22 m-t-20">

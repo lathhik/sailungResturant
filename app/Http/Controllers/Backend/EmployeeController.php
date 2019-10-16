@@ -19,7 +19,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        $employees = Employee::paginate(5);
+        $employees = Employee::paginate(10);
         return view('backend/pages/employee/view-emp')->with('employees', $employees);
     }
 
@@ -44,17 +44,34 @@ class EmployeeController extends Controller
     public function addEmpAction(Request $request)
     {
         $this->validate($request, [
-            'first_name' => 'required|min:3|max:20|alpha',
-            'last_name' => 'required|min:3|max:20|alpha',
-            'address' => 'required|min:3|alpha',
+            'first_name' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,20}$/'
+            ],
+            'last_name' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,30}$/'
+            ],
+            'address' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,20}$/'
+            ],
             'gender' => 'required',
             'dob' => 'required|date',
-            'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15|min:7',
+            'contact' => ['required',
+                'regex:/^([0-9\s\-\+\(\)]*)$/',
+                'max:15',
+                'min:7'
+            ],
             'email' => 'required|email|unique:employees,email',
             'job_started_from' => 'required|date',
             'role' => 'required|numeric',
             'salary' => 'required|numeric',
-            'nationality' => 'required|alpha',
+            'nationality' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,30}$/'
+            ],
+            'about' => 'required|min:50',
             'image' => 'required|image'
         ]);
 
@@ -70,6 +87,7 @@ class EmployeeController extends Controller
         $emp->role_id = $request->role;
         $emp->salary = $request->salary;
         $emp->nationality = $request->nationality;
+        $emp->about_emp = $request->about;
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
@@ -132,13 +150,25 @@ class EmployeeController extends Controller
 //        return $emp->email;
 
         $this->validate($request, [
-            'first_name' => 'required|min:3|max:20|alpha',
-            'last_name' => 'required|min:3|max:20|alpha',
-            'address' => 'required|min:3',
+            'first_name' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,20}$/'
+            ],
+            'last_name' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,30}$/'
+            ],
+            'address' => [
+                'required',
+                'regex:/^[A-Za-z0-9\s]{3,20}$/'
+            ],
             'gender' => 'required',
             'dob' => 'required|date',
             'contact' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|max:15|min:7',
-            'nationality' => 'required|min:3|alpha',
+            'nationality' => [
+                'required',
+                'regex:/^[A-Za-z\s]{3,30}$/'
+            ],
             'job_started_from' => 'required|date',
             'salary' => 'required|numeric',
             'role' => 'required',
@@ -146,7 +176,8 @@ class EmployeeController extends Controller
                 'required',
                 'email',
                 Rule::unique('employees')->ignore($emp->id)
-            ]
+            ],
+            'about' => 'required|min:50',
         ]);
 
         $emp->first_name = $request->first_name;
@@ -160,6 +191,7 @@ class EmployeeController extends Controller
         $emp->role_id = $request->role;
         $emp->salary = $request->salary;
         $emp->email = $request->email;
+        $emp->about_emp = $request->about;
 
         if ($request->hasFile('image')) {
             $this->validate($request, [

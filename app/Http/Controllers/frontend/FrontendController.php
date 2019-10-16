@@ -7,9 +7,11 @@ use App\models\backend\Employee;
 use App\models\backend\Food;
 use App\models\backend\Role;
 use App\models\backend\Table;
+use App\models\backend\Event;
 use App\models\backend\TableTypes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Image;
 
 class FrontendController extends Controller
 {
@@ -38,7 +40,6 @@ class FrontendController extends Controller
 
     public function showChefs()
     {
-
         $chefs = Employee::whereHas('role', function ($query) {
             $query->where('role', 'chef');
         })->get();
@@ -48,11 +49,19 @@ class FrontendController extends Controller
 
     public function showEventDetails()
     {
-        return view('frontend/details/event-details');
+        $events = Event::paginate(2);
+        return view('frontend/details/event-details')->with('events', $events);
     }
 
 
-    # =============================== #### ========================
+    public function viewDetails($id)
+    {
+        $event = Event::find($id);
+        return view('frontend/details/event-details-book')->with('evnt', $event);
+    }
+
+
+    #=======================================########## ########################========================
 
 
     public function test()

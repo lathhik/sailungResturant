@@ -40,7 +40,7 @@ class TableController extends Controller
     public function addTableAction(Request $request)
     {
         $this->validate($request, [
-            'table_name' => 'required',
+            'table_name' => 'required|unique:tables,table_name',
             'booking_price' => 'required|numeric',
             'table_type' => 'required'
         ]);
@@ -65,7 +65,32 @@ class TableController extends Controller
      */
     public function viewTable(Table $table)
     {
-        $tables = Table::all();
+        $tables = Table::paginate(15);
+
+        $date = date('Y-m-d');
+        $bookings = BookingTable::where('booking_date', '>=', $date)->get();
+//        return $bookings;
+        foreach ($bookings as $booking) {
+            $book_day = $booking->booking_date;
+//            return $book_day;
+            $next_day_sec = strtotime("+1 day", strtotime($book_day));
+            $next_day = date('Y-m-d', $next_day_sec);
+
+            if ($date == $next_day) {
+
+                $book_table = BookingTable::with('table')
+                    ->where('booking_date', '=', $book_day)->get();
+                foreach ($book_table as $table) {
+                    $table_to_update = Table::find($table->table->id);
+                    if ($table_to_update->availability == 0) {
+                        $table_to_update->availability = 1;
+                    }
+                    $table_to_update->save();
+                }
+
+            }
+        }
+
         $table_types = TableTypes::all();
         return view('backend/pages/table/view-tables')->with('tables', $tables)->with('table_types', $table_types);
     }
@@ -173,7 +198,7 @@ class TableController extends Controller
         }
 
         $freeTables = [];
-        foreach ($freeTablesId as $id){
+        foreach ($freeTablesId as $id) {
             $tbles = Table::find($id);
             array_push($freeTables, $tbles);
         }

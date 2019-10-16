@@ -96,8 +96,8 @@
                     </li>
                     <li><a><i class="fa fa-money"></i> Booking <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="page_403.html">Booked Tables</a></li>
-                            <li><a href="page_404.html">Available Tables</a></li>
+                            <li><a href="{{route('booked-tables')}}">Booked Tables</a></li>
+                            <li><a href="{{route('available-tables')}}">Available Tables</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -114,8 +114,21 @@
                     </li>
                     <li><a><i class="fa fa-money"></i> Booking <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{route('booked-tables')}}">Booked Tables</a></li>
-                            <li><a href="{{route('available-tables')}}">Available Tables</a></li>
+                            <li><a href="{{route('view-booked-events')}}">Booked Events</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="menu_section">
+                <h3>Blog</h3>
+                <ul class="nav side-menu">
+                    <li><a><i class="fa fa-book"></i> Blog <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu">
+                            <li><a href="{{route('add-blog-category')}}">Add Blog Category</a></li>
+                            <li><a href="{{route('view-blog-category')}}">View Blog Category</a></li>
+                            <li><a href="{{route('add-blog')}}">Add Blog</a></li>
+                            <li><a href="{{route('view-blog')}}">View Blog</a></li>
                         </ul>
                     </li>
                 </ul>
